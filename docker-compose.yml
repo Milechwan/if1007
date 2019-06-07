@@ -1,0 +1,66 @@
+version: '2'
+services:
+  rabbitmq:
+    container_name: rabbitmq
+    image: rabbitmq:3-management
+    network_mode: "host"
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    network_mode: "host"
+    restart: always
+    ports:
+      - "27017:27017"
+  eureka:
+    container_name: eureka
+    build: eureka/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8761:8761"
+  hystrix:
+    container_name: hystrix
+    build: hystrix/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "7979:7979"
+  restaurant-service:
+    container_name: restaurant
+    build: restaurant-service/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8001:8001"
+  order-service:
+    container_name: order
+    build: order-service/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8002:8002"
+  payment-distribution-service:
+    container_name: payment-distribution
+    build: payment-distribution/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8003:8003"
+  payment-service:
+    container_name: payment
+    build: payment-service/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8004:8004"
+  order-updater-service:
+    container_name: order-updater
+    build: order-complete-updater/
+    network_mode: "host"
+    restart: always
+    ports:
+      - "8005:8005"
