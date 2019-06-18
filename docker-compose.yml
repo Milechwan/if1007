@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   rabbitmq:
     container_name: rabbitmq
@@ -17,49 +17,56 @@ services:
       - "27017:27017"
   eureka:
     container_name: eureka
-    build: eureka/
+    build: "./eureka"
+    image: eureka:0.1
     network_mode: "host"
     restart: always
     ports:
       - "8761:8761"
   hystrix:
     container_name: hystrix
-    build: hystrix/
+    build: "./hystrix"
+    image: hystrix:0.1
     network_mode: "host"
     restart: always
     ports:
       - "7979:7979"
   restaurant-service:
     container_name: restaurant
-    build: restaurant-service/
+    build: "./restaurant-service"
+    image: restaurant-service:0.1
     network_mode: "host"
     restart: always
     ports:
       - "8001:8001"
   order-service:
     container_name: order
-    build: order-service/
+    build: "./order-service"
+    image: order-service:0.1
     network_mode: "host"
     restart: always
     ports:
       - "8002:8002"
   payment-distribution-service:
     container_name: payment-distribution
-    build: payment-distribution/
+    build: "./payment-distribution"
+    image: payment-distribution:0.1
     network_mode: "host"
     restart: always
     ports:
       - "8003:8003"
   payment-service:
     container_name: payment
-    build: payment-service/
+    build: "./payment-service"
+    image: payment-service:0.1
     network_mode: "host"
     restart: always
     ports:
       - "8004:8004"
   order-updater-service:
     container_name: order-updater
-    build: order-complete-updater/
+    build: "./order-complete-updater"
+    image: order-complete-updater:0.1
     network_mode: "host"
     restart: always
     ports:
