@@ -6,8 +6,8 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: order-service
-  name: order-service
+    io.kompose.service: hystrix
+  name: hystrix
 spec:
   replicas: 1
   strategy: {}
@@ -15,13 +15,13 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: order-service
+        io.kompose.service: hystrix
     spec:
       containers:
-      - image: order-service:0.1
-        name: order
+      - image: hystrix:0.1
+        name: hystrix
         ports:
-        - containerPort: 8002
+        - containerPort: 7979
         resources: {}
         imagePullPolicy: Never
       restartPolicy: Always

@@ -18,7 +18,7 @@ spec:
         io.kompose.service: restaurant-service
     spec:
       containers:
-      - image: restaurant-service
+      - image: restaurant-service:0.1
         name: restaurant
         ports:
         - containerPort: 8001

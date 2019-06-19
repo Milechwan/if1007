@@ -6,15 +6,14 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: order-service
-  name: order-service
+    io.kompose.service: hystrix
+  name: hystrix
 spec:
   ports:
-  - name: "8002"
-    port: 8002
-    targetPort: 8002
-    imagePullPolicy: Never
+  - name: "7979"
+    port: 7979
+    targetPort: 7979
   selector:
-    io.kompose.service: order-service
+    io.kompose.service: hystrix
 status:
   loadBalancer: {}

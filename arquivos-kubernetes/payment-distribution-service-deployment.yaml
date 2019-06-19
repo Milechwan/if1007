@@ -18,10 +18,11 @@ spec:
         io.kompose.service: payment-distribution-service
     spec:
       containers:
-      - image: payment-distribution-service
+      - image: payment-distribution:0.1
         name: payment-distribution
         ports:
         - containerPort: 8003
         resources: {}
+        imagePullPolicy: Never
       restartPolicy: Always
 status: {}
