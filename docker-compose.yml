@@ -10,7 +10,7 @@ services:
       - "15672:15672"
   mongodb:
     container_name: mongodb
-    image: mongo
+    image: mongo  
     network_mode: host
     restart: always
     ports:
