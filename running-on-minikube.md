@@ -12,6 +12,10 @@ Já que não é utilizada nenhuma VM, as imagens são geradas usando o docker j�
 
 - _sudo docker build -t microservice-name:tag ./microservice-name_
 
+Opcionalmente, aproveitando o _docker-compose_ já existente:
+
+- _sudo docker-compose build_
+
 ##### Subindo as imagens para Minikube através de Kubectl
 
 Com o kubectl integrado ao Minikube, para criar os deployments, basta utilizar o seguinte comando no caso dos microsserviços:
