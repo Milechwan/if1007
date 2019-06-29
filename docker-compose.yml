@@ -3,7 +3,7 @@ services:
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
-    network_mode: "host"
+    network_mode: host
     restart: always
     ports:
       - "5672:5672"
@@ -11,7 +11,7 @@ services:
   mongodb:
     container_name: mongodb
     image: mongo
-    network_mode: "host"
+    network_mode: host
     restart: always
     ports:
       - "27017:27017"
