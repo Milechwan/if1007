@@ -1,5 +1,15 @@
 ### Minikube
 
+##### Exportar configurações necessárias no ambiente
+
+Antes de criar o minikube, deve-se exportar as seguintes variáveis, de acordo com o [arquivo](https://github.com/kubernetes/minikube/blob/master/docs/vmdriver-none.md):
+
+- *export MINIKUBE_WANTUPDATENOTIFICATION=false*
+- *export MINIKUBE_WANTREPORTERRORPROMPT=false*
+- *export MINIKUBE_HOME=$HOME*
+- *export CHANGE_MINIKUBE_NONE_USER=true*
+- *export KUBECONFIG=$HOME/.kube/config*
+
 Para a aplicação ser orquestrada através do Minikube, foram utilizadas as seguintes configurações ao dar *minikube start*:
 
 1. *--vm-driver*=none, para executar em um Ubuntu 18.04 com Docker instalado (configurações mínimas para não precisar de um driver de máquina virtual)
