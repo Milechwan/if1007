@@ -1,5 +1,6 @@
 version: '3'
 services:
+  
   rabbitmq:
     container_name: rabbitmq
     image: rabbitmq:3-management
@@ -12,6 +13,8 @@ services:
     container_name: mongodb
     image: mongo
     network_mode: host
+    volumes:
+      - ./backup-mongo
     restart: always
     ports:
       - "27017:27017"
