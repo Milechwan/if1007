@@ -20,5 +20,5 @@ spec:
           volumes:
           - name: mongodumps
             persistentVolumeClaim:
-              claimName: mongodb-pv-claim
+              claimName: mongodump-pv-claim
           restartPolicy: OnFailure
