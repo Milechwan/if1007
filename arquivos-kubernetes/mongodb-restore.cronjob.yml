@@ -1,19 +1,19 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: backup-db
+  name: restore-db
   labels:
-    app: backup-db
+    app: restore-db
 spec:
-  schedule: "*/10 * * * *"
+  schedule: "*/15 * * * *"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
-          - name: backup-db
+          - name: restore-db
             image: mongo
-            command: ["mongodump","--host", "mongodb:27017","--out", "/dump", "--verbose"]
+            command: ["mongorestore","--host", "mongodb:27017","--verbose","/dump"]
             volumeMounts:
             - mountPath: "/dump"
               name: mongodumps
@@ -21,4 +21,4 @@ spec:
           - name: mongodumps
             persistentVolumeClaim:
               claimName: mongodump-pv-claim
-          restartPolicy: OnFailure
+          restartPolicy: Never
