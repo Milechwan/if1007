@@ -1,5 +1,4 @@
-apiVersion: extensions/v1beta1
-kind: Deployment
+apiVersion: v1
 metadata:
   annotations:
     kompose.cmd: kompose convert
@@ -24,8 +23,7 @@ spec:
         - containerPort: 7979
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
-
+      restartPolicy: OnFailure
       - image: rabbitmq:3-management
           name: rabbitmq
           ports:
@@ -33,23 +31,14 @@ spec:
           - containerPort: 15672
           resources: {}
           imagePullPolicy: Never
-      restartPolicy: Always
-      
+      restartPolicy: OnFailure 
       - image: mongo:latest
         name: mongodb
         ports:
         - containerPort: 27017
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
-
-      - image: eureka:0.1
-        name: eureka
-        ports:
-        - containerPort: 8761
-        resources: {}
-        imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 
       - image: restaurant-service:0.1
         name: restaurant-service
@@ -57,7 +46,7 @@ spec:
         - containerPort: 8001
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 
       - image: order-service:0.1
         name: order-service
@@ -65,7 +54,7 @@ spec:
         - containerPort: 8002
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 
       - image: payment-distribution:0.1
         name: payment-distribution
@@ -73,7 +62,7 @@ spec:
         - containerPort: 8003
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 
       - image: payment-service:0.1
         name: payment-service
@@ -81,7 +70,7 @@ spec:
         - containerPort: 8004
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 
       - image: order-complete-updater:0.1
         name: order-complete-updater
@@ -89,5 +78,5 @@ spec:
         - containerPort: 8005
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 status: {}

@@ -1,21 +1,21 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: order-updater-service
+    app: order-updater-service
   name: order-updater-service
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: order-complete-updater
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: order-updater-service
+        app: order-updater-service
     spec:
       containers:
       - image: order-complete-updater:0.1
@@ -24,5 +24,5 @@ spec:
         - containerPort: 8005
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 status: {}

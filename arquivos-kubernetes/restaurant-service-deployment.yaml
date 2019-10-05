@@ -1,21 +1,20 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
   labels:
-    io.kompose.service: restaurant-service
+    app: restaurant-service
   name: restaurant-service
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: restaurant-service
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: restaurant-service
+        app: restaurant-service
     spec:
       containers:
       - image: restaurant-service:0.1
@@ -23,5 +22,5 @@ spec:
         ports:
         - containerPort: 8001
         resources: {}
-      restartPolicy: Always
+      restartPolicy: OnFailure
 status: {}

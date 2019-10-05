@@ -5,7 +5,7 @@ services:
     container_name: rabbitmq
     image: rabbitmq:3-management
     network_mode: host
-    restart: always
+    restart: on-failure
     ports:
       - "5672:5672"
       - "15672:15672"
@@ -13,23 +13,15 @@ services:
     container_name: mongodb
     image: mongo
     network_mode: host
-    restart: always
+    restart: on-failure
     ports:
       - "27017:27017"
-  eureka:
-    container_name: eureka
-    build: "./eureka"
-    image: eureka:0.1
-    network_mode: "host"
-    restart: always
-    ports:
-      - "8761:8761"
   hystrix:
     container_name: hystrix
     build: "./hystrix"
     image: hystrix:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "7979:7979"
   restaurant-service:
@@ -37,7 +29,7 @@ services:
     build: "./restaurant-service"
     image: restaurant-service:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "8001:8001"
   order-service:
@@ -45,7 +37,7 @@ services:
     build: "./order-service"
     image: order-service:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "8002:8002"
   payment-distribution-service:
@@ -53,7 +45,7 @@ services:
     build: "./payment-distribution"
     image: payment-distribution:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "8003:8003"
   payment-service:
@@ -61,7 +53,7 @@ services:
     build: "./payment-service"
     image: payment-service:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "8004:8004"
   order-updater-service:
@@ -69,6 +61,6 @@ services:
     build: "./order-complete-updater"
     image: order-complete-updater:0.1
     network_mode: "host"
-    restart: always
+    restart: on-failure
     ports:
       - "8005:8005"

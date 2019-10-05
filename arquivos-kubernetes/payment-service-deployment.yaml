@@ -1,21 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    kompose.cmd: kompose convert
-    kompose.version: 1.18.0 (06a2e56)
-  creationTimestamp: null
-  labels:
-    io.kompose.service: payment-service
   name: payment-service
+  labels:
+    app: payment-service-dply
 spec:
   replicas: 1
-  strategy: {}
+  selector:
+    matchLabels:
+      app: hystrix
   template:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: payment-service
+        app: payment-service-dply
     spec:
       containers:
       - image: payment-service:0.1
@@ -24,5 +22,5 @@ spec:
         - containerPort: 8004
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: Always
+      restartPolicy: OnFailure
 status: {}
