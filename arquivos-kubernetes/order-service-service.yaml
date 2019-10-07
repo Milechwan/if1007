@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: order-service
+    app: order-service
   name: order-service
 spec:
   ports:
@@ -15,6 +15,6 @@ spec:
     targetPort: 8002
     imagePullPolicy: Never
   selector:
-    io.kompose.service: order-service
+    app: order-service
 status:
   loadBalancer: {}

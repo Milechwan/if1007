@@ -1,11 +1,11 @@
-apiVersion: v1
+apiVersion: apps/v1
 metadata:
   annotations:
     kompose.cmd: kompose convert
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: greenhouse-delivery
+    app: greenhouse-delivery
   name: greenhouse-delivery
 spec:
   replicas: 3
@@ -14,7 +14,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: greenhouse-delivery
+        app: greenhouse-delivery
     spec:
       containers:
       - image: hystrix:0.1
@@ -23,7 +23,7 @@ spec:
         - containerPort: 7979
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
       - image: rabbitmq:3-management
           name: rabbitmq
           ports:
@@ -31,14 +31,14 @@ spec:
           - containerPort: 15672
           resources: {}
           imagePullPolicy: Never
-      restartPolicy: OnFailure 
+      restartPolicy: Always 
       - image: mongo:latest
         name: mongodb
         ports:
         - containerPort: 27017
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 
       - image: restaurant-service:0.1
         name: restaurant-service
@@ -46,7 +46,7 @@ spec:
         - containerPort: 8001
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 
       - image: order-service:0.1
         name: order-service
@@ -54,7 +54,7 @@ spec:
         - containerPort: 8002
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 
       - image: payment-distribution:0.1
         name: payment-distribution
@@ -62,7 +62,7 @@ spec:
         - containerPort: 8003
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 
       - image: payment-service:0.1
         name: payment-service
@@ -70,7 +70,7 @@ spec:
         - containerPort: 8004
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 
       - image: order-complete-updater:0.1
         name: order-complete-updater
@@ -78,5 +78,5 @@ spec:
         - containerPort: 8005
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 status: {}

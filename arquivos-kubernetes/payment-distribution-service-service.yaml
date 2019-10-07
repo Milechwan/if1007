@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: payment-distribution-service
+    app: payment-distribution-service
   name: payment-distribution-service
 spec:
   ports:
@@ -14,6 +14,6 @@ spec:
     port: 8003
     targetPort: 8003
   selector:
-    io.kompose.service: payment-distribution-service
+    app: payment-distribution-service
 status:
   loadBalancer: {}

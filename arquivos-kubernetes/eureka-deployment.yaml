@@ -6,7 +6,7 @@ metadata:
     kompose.version: 1.18.0 (06a2e56)
   creationTimestamp: null
   labels:
-    io.kompose.service: eureka
+    app: eureka
   name: eureka
 spec:
   replicas: 1
@@ -15,7 +15,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        io.kompose.service: eureka
+        app: eureka
     spec:
       containers:
       - image: eureka:0.1

@@ -23,5 +23,5 @@ spec:
         - containerPort: 8003
         resources: {}
         imagePullPolicy: Never
-      restartPolicy: OnFailure
+      restartPolicy: Always
 status: {}
