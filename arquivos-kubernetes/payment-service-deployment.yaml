@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-service
+  name: payment
   labels:
-    app: payment-service-dply
+    app: payment
 spec:
   replicas: 1
   selector:
@@ -13,7 +13,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: payment-service-dply
+        app: payment
     spec:
       containers:
       - image: payment-service:0.1
