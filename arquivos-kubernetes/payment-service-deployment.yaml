@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: hystrix
+      app: payment
   template:
     metadata:
       creationTimestamp: null
